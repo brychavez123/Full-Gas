@@ -163,6 +163,30 @@ window.FullGasForms = (() => {
     return cargarUsuarios().find((usuario) => usuario.email.toLowerCase() === String(correo).toLowerCase());
   }
 
+  function inicializarCamposNumericos(contenedor) {
+    contenedor.querySelectorAll('[data-numeric-field]').forEach((campo) => {
+      campo.addEventListener('keydown', (e) => {
+        const teclasSistema = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'];
+        if (!teclasSistema.includes(e.key) && !/^[0-9]$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+      campo.addEventListener('input', () => {
+        const cursor = campo.selectionStart;
+        const limpio = campo.value.replace(/[^0-9]/g, '');
+        if (campo.value !== limpio) {
+          campo.value = limpio;
+          campo.setSelectionRange(cursor - 1, cursor - 1);
+        }
+      });
+    });
+  }
+
+  function normalizarTelefono(valor) {
+    const digitos = String(valor || '').replace(/^\+56/, '').replace(/[^0-9]/g, '');
+    return digitos;
+  }
+
   return {
     notificar,
     cargarSesion,
@@ -180,6 +204,8 @@ window.FullGasForms = (() => {
     actualizarEstadoValidacion,
     guardarUsuario,
     agregarRecuperacion,
-    obtenerUsuarioPorCorreo
+    obtenerUsuarioPorCorreo,
+    inicializarCamposNumericos,
+    normalizarTelefono
   };
 })();

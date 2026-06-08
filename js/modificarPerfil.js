@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     profileName: sesion.name,
     profileRole: sesion.role,
     profileEmail: sesion.email,
-    profilePhone: sesion.phone,
+    profilePhone: FullGasForms.normalizarTelefono(sesion.phone),
     profileAddress: sesion.address
   };
 
@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  FullGasForms.inicializarCamposNumericos(formulario);
+
   formulario.addEventListener('input', () => {
     FullGasForms.actualizarEstadoValidacion(formulario);
   });
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sesionActualizada = {
       name: String(datos.get('name') || '').trim(),
       email: String(datos.get('email') || '').trim(),
-      phone: String(datos.get('phone') || '').trim(),
+      phone: '+56' + String(datos.get('phone') || '').trim(),
       address: String(datos.get('address') || '').trim(),
       role: sesion.role || 'Cliente'
     };

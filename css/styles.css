@@ -312,6 +312,13 @@ a {
   color: rgba(255, 255, 255, 0.35);
 }
 
+.input-group-text {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--brand);
+  border-color: var(--line);
+  font-weight: 600;
+}
+
 .table-dark {
   --bs-table-bg: transparent;
   --bs-table-striped-bg: rgba(255, 255, 255, 0.03);

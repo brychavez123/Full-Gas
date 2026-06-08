@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const formulario = document.querySelector('[data-register-form]');
   if (!formulario || !window.FullGasForms) return;
 
+  FullGasForms.inicializarCamposNumericos(formulario);
+
   const camposAlfabeticos = Array.from(formulario.querySelectorAll('[data-alpha-field]'));
   const patronAlfabetico = /^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$/;
 
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const usuario = {
       name: `${nombre} ${apellido}`.trim(),
       email: String(datos.get('email') || '').trim(),
-      phone: String(datos.get('phone') || '').trim(),
+      phone: '+56' + String(datos.get('phone') || '').trim(),
       address: String(datos.get('address') || '').trim(),
       role: 'Cliente',
       password: String(datos.get('password') || '').trim(),
