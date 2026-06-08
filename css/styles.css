@@ -376,6 +376,38 @@ a {
   pointer-events: none;
 }
 
+.site-footer {
+  background: rgba(9, 12, 17, 0.92);
+}
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.footer-social:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: rgba(242, 181, 68, 0.1);
+}
+
+.footer-link {
+  transition: color 0.15s ease;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--brand) !important;
+}
+
 .toast-message {
   position: fixed;
   right: 1rem;
